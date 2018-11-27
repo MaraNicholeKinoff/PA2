@@ -269,7 +269,7 @@ namespace PA1
                                         }
                                         else 
                                         {
-                                            //make a string for the GradStudent() function
+                                            //make a string for the UndergradStudent() function
                                             string[] undergraduateStudent = new string[] {ugradID, ugradPassWord, ugradStudentName, ugradStudentGPA, ugradStudentDOB, ugradStudentPrevHS, ugradStudentClass};
                                             UndergradStudent ugstudent = new UndergradStudent(undergraduateStudent);
                                             ugslist.Add(ugstudent);
@@ -294,21 +294,93 @@ namespace PA1
 
                                     case '5': //TODO (3): Add new  course by asking Admin for course info., verify inputs 1st
                                               //        : ++ Save new list to File if admin agrees
-                                             
-                                         // Test: Currently adding one specific course
-                                        coursesList.Add(new Course("Adv. Prog", 3312, 3));
+                                        //Get input from user about course
+                                        Console.Write("\nEnter course's name: ");
+                                        string courseName = Console.ReadLine();
+                                        Console.Write("\nEnter course's ID: ");
+                                        int courseID = Convert.ToInt32(Console.ReadLine());
+                                        Console.Write("\nEnter amount of credits for this course: ");
+                                        var courseCreditsNum = Console.ReadLine();
+                                        //Check to see if the course already exists
+                                        var courseCheck = findCourse(coursesList, courseID); //checking the id against current courses
+                                        if(courseCheck != null) //If course id already exists throw an error
+                                        {
+                                            Console.WriteLine("\nError. A course with that ID already exists in the system.\n");
+                                        }
+                                        else 
+                                        {
+                                            //make a string for the Course() function
+                                            string newCourseID = Convert.ToString(courseID);
+                                            string[] newCourse = new string[] {courseName, newCourseID, courseCreditsNum};
+                                            Course addNewCourse = new Course(newCourse);
+                                            coursesList.Add(addNewCourse);
+                                        }
+                                        
+                                        // Test: Currently adding one specific course
+                                        // coursesList.Add(new Course("Adv. Prog", 3312, 3));
                                         //coursesList[0].professor = (Professor )profList[0];
                                         break;
                                     case '6': //TODO (4): Assign course to prof by getting ProfId, courseId,
                                               //        : verify inputs, and prof doesnot have >3 courses
                                               //        : ++ Save new list to File, and make the code initialize prof-course-assignment list from a file 
+                                        //creating a loop so that the admin can correctly choose the professor and course id 
+                                        string adminVerify = "N";                                   
+                                        while (adminVerify != "Y") {
+                                             //Showing the admin the list of professors then making them chose by the professor ID
+                                            Console.WriteLine("\nList of Professors");
+                                            foreach (var p in profList) {
+                                                string profID;
+                                                Console.WriteLine($"Professor ID: {profID = p.getUid()}");
+                                            }
+                                            Console.Write("\nSelect a professor from the list above by typing the ID: ");
+                                            string adminProfChoice = Console.ReadLine();
+                                            //Checking that the selected professor exists
+                                            Professor checkingProfSelection = (Professor)findUser(profList, adminProfChoice);
+                                            //Showing the admin the list of courses then making them chose by the course ID
+                                            Console.WriteLine("\nList of Courses");
+                                            foreach (var c in coursesList) {
+                                                int courseChoiceID;
+                                                Console.WriteLine($"Course ID: {courseChoiceID= c.cId}");
+                                            }
+                                            Console.Write("\nSelect a course from the list above by typing the ID: ");
+                                            string adminCourseChoice = Console.ReadLine();
+                                            //Checking that the selected professor exists
+                                            Course checkingCourseSelection = (Course)findCourse(coursesList, Convert.ToInt32(adminCourseChoice));
+                                            Console.Write($"\nAre these choices correct? (Y or N)\n\tProfessor ID = {adminProfChoice}\n\tCourse ID = {adminCourseChoice}");
+                                            adminVerify = Console.ReadLine();
+
+                                            if (adminVerify == "Y") {
+                                                Console.WriteLine("\nChecking to see if the selected professor has more than three courses....");
+                                                int numProfCourses = 0;
+                                                foreach (var c in coursesList) {
+                                                    if (c.professor.getUid() == adminProfChoice) {
+                                                        numProfCourses++; //Counts number of courses the selected professor has
+                                                    }
+                                                }
+                                                if (numProfCourses > 3) {
+                                                    Console.WriteLine("\nThis professor already has 3 courses. Please try again.");
+                                                    adminVerify = "N";
+                                                }
+                                                else {
+                                                    Console.WriteLine("\nAssigning the course to the professor...");
+                                                    foreach (var c in coursesList)
+                                                    {
+                                                        if (c.cId == Convert.ToInt32(adminCourseChoice)) {
+                                                            c.professor = checkingProfSelection;
+                                                            c.professor.addCourseToTeach(c);
+                                                            Console.WriteLine("\nCourse successfully assigned.");
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
 
                                         // Test: Currently Assign all courses to 1st prof in the list
-                                        foreach (var c in coursesList)
-                                        {
-                                            c.professor = (Professor)profList[0];
-                                            c.professor.addCourseToTeach(c);
-                                        }
+                                        // foreach (var c in coursesList)
+                                        // {
+                                        //     c.professor = (Professor)profList[0];
+                                        //     c.professor.addCourseToTeach(c);
+                                        // }
                                         break;
 
                                     case '7':
