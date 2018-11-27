@@ -368,7 +368,7 @@ namespace PA1
                                                         if (c.cId == Convert.ToInt32(adminCourseChoice)) {
                                                             c.professor = checkingProfSelection;
                                                             c.professor.addCourseToTeach(c);
-                                                            Console.WriteLine("\nCourse successfully assigned.");
+                                                            Console.WriteLine("\nCourse successfully.");
                                                         }
                                                     }
                                                 }
@@ -433,12 +433,19 @@ namespace PA1
 
                                         Course selectedCourse = findCourse(coursesList, cId);
                                         // TODO (5): check if stud already enrolled in the course before adding
-                                        if (selectedCourse != null)
-                                        {
-                                            Enrollment tEn = new Enrollment(selectedCourse, student);
-                                            courseEnrolls.Add(tEn);
-                                            student.addEnrollment(tEn);
-                                            selectedCourse.addEnrollment(tEn);
+                                        Enrollment courseChecking;
+                                        courseChecking = student.getEnrolmentByCourseId(cId);
+                                        if(courseChecking != null) {
+                                            Console.WriteLine("/nStudent is already enrolled in this course.");
+                                        }
+                                        else {
+                                            if (selectedCourse != null)
+                                            {
+                                                Enrollment tEn = new Enrollment(selectedCourse, student);
+                                                courseEnrolls.Add(tEn);
+                                                student.addEnrollment(tEn);
+                                                selectedCourse.addEnrollment(tEn);
+                                            }
                                         }
                                         break;
 
@@ -461,8 +468,23 @@ namespace PA1
                                         }
                                         break;
 
-                                        //case '4': 
-                                        // TODO (6): Drop course, get cId, verify cId in student enrollments, then remove enrol.    
+                                        case '4': 
+                                        // TODO (6): Drop course, get cId, verify cId in student enrollments, then remove enrollment. 
+                                            Console.WriteLine("Enter Course Id for course to drop: ");
+                                            int cDropId = int.Parse(Console.ReadLine());
+
+                                            Course selectedDropCourse = findCourse(coursesList, cDropId);
+                                            // TODO (5): check if stud already enrolled in the course before adding
+                                            Enrollment courseCheckingForDrop;
+                                            courseCheckingForDrop = student.getEnrolmentByCourseId(cDropId);
+                                            if (courseCheckingForDrop != null) {
+                                                courseEnrolls.Remove(courseCheckingForDrop);
+                                                Console.WriteLine("\nStudent has been dropped from the course.");
+                                            }
+                                            else {
+                                                Console.WriteLine("\nStudent already not enrolled.");
+                                            }
+                                            break;   
 
                                 } // switch ch2
                             } while (ch2 != '0');
@@ -505,6 +527,7 @@ namespace PA1
                                         Course selectedCourse = findCourse(coursesList, cId);
                                         // TODO (7): get assessment type: assignment, exam, proj,...
                                         //         : then add assessment info 
+                                        
                                         if (selectedCourse != null)
                                         {
 
