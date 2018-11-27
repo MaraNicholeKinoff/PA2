@@ -527,25 +527,45 @@ namespace PA1
                                         Course selectedCourse = findCourse(coursesList, cId);
                                         // TODO (7): get assessment type: assignment, exam, proj,...
                                         //         : then add assessment info 
-                                        
-                                        if (selectedCourse != null)
-                                        {
+                                        Console.Write("\nEnter the type of assesmment: 1 - assignment, 2 - exam");
+                                        string assesmentType = Console.ReadLine();
+                                        switch (assesmentType) {
+                                            case "1":
+                                                if (selectedCourse != null)
+                                                {
+                                                    Console.WriteLine("Enter Assessment info: ");
+                                                    Console.WriteLine("Id = ");
+                                                    string assesId = Console.ReadLine();
+                                                    Console.WriteLine("Weight = ");
+                                                    float aPercent = float.Parse(Console.ReadLine());
+                                                    Console.WriteLine("Descr = ");
+                                                    string asDescr = Console.ReadLine();
+                                                    Console.WriteLine("Points = ");
+                                                    float aPoints = float.Parse(Console.ReadLine());
+                                                    Console.WriteLine("Due on = ");
+                                                    string aDueDate = Console.ReadLine();
+                                                    Console.WriteLine("Late Pen = ");
+                                                    float latePen = float.Parse(Console.ReadLine());
 
-                                            Console.WriteLine("Enter Assessment info: ");
-                                            Console.WriteLine("Id = ");
-                                            string assesId = Console.ReadLine();
-                                            Console.WriteLine("Weight = ");
-                                            float aPercent = float.Parse(Console.ReadLine());
-                                            Console.WriteLine("Descr = ");
-                                            string asDescr = Console.ReadLine();
-                                            Console.WriteLine("Points = ");
-                                            float aPoints = float.Parse(Console.ReadLine());
-                                            Console.WriteLine("Due on = ");
-                                            string aDueDate = Console.ReadLine();
-                                            Console.WriteLine("Late Pen = ");
-                                            float latePen = float.Parse(Console.ReadLine());
-
-                                            selectedCourse.AddCourseAssesment(new Assignment(assesId, aPercent, asDescr, aPoints, aDueDate, latePen));
+                                                    selectedCourse.AddCourseAssesment(new Assignment(assesId, aPercent, asDescr, aPoints, aDueDate, latePen));
+                                                }
+                                                break;
+                                            case "2":
+                                                if (selectedCourse != null) {
+                                                    Console.WriteLine("Enter Assessment info: ");
+                                                    Console.WriteLine("Exam Name = ");
+                                                    string examName = Console.ReadLine();
+                                                    Console.WriteLine("Exam Percentage = ");
+                                                    float examPercentage = float.Parse(Console.ReadLine());
+                                                    Console.WriteLine("Exam Points = ");
+                                                    float examPoints = float.Parse(Console.ReadLine());
+                                                    Console.WriteLine("Exam Due On = ");
+                                                    string examDueDate = Console.ReadLine();
+                                                    Console.WriteLine("Exam Number of Attempts = ");
+                                                    int examAttempts = int.Parse(Console.ReadLine());
+                                                    selectedCourse.AddCourseAssesment(new Exam(examName, examPercentage, examPoints, examDueDate, examAttempts));
+                                                }
+                                                break;
                                         }
 
 
