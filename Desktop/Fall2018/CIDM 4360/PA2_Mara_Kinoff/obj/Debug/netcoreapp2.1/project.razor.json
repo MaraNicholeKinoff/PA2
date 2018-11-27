@@ -1,0 +1,14 @@
+{
+  "ProjectFilePath": "c:\\Users\\maram\\Desktop\\Fall2018\\CIDM 4360\\PA2_Mara_Kinoff\\PA2-GivenCode.csproj",
+  "TargetFramework": "netcoreapp2.1",
+  "TagHelpers": [],
+  "Configuration": {
+    "ConfigurationName": "UnsupportedRazor",
+    "LanguageVersion": "1.0",
+    "Extensions": [
+      {
+        "ExtensionName": "UnsupportedRazorExtension"
+      }
+    ]
+  }
+}

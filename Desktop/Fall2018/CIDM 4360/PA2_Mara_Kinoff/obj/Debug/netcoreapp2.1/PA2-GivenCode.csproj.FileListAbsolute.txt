@@ -1,0 +1,11 @@
+U:\WTAMU\MyClasses\Fall2018\OOAD\HW\PA#2\PA#2\PA2-GivenCode\bin\Debug\netcoreapp2.1\PA2-GivenCode.deps.json
+U:\WTAMU\MyClasses\Fall2018\OOAD\HW\PA#2\PA#2\PA2-GivenCode\bin\Debug\netcoreapp2.1\PA2-GivenCode.runtimeconfig.json
+U:\WTAMU\MyClasses\Fall2018\OOAD\HW\PA#2\PA#2\PA2-GivenCode\bin\Debug\netcoreapp2.1\PA2-GivenCode.runtimeconfig.dev.json
+U:\WTAMU\MyClasses\Fall2018\OOAD\HW\PA#2\PA#2\PA2-GivenCode\bin\Debug\netcoreapp2.1\PA2-GivenCode.dll
+U:\WTAMU\MyClasses\Fall2018\OOAD\HW\PA#2\PA#2\PA2-GivenCode\bin\Debug\netcoreapp2.1\PA2-GivenCode.pdb
+U:\WTAMU\MyClasses\Fall2018\OOAD\HW\PA#2\PA#2\PA2-GivenCode\obj\Debug\netcoreapp2.1\PA2-GivenCode.csprojAssemblyReference.cache
+U:\WTAMU\MyClasses\Fall2018\OOAD\HW\PA#2\PA#2\PA2-GivenCode\obj\Debug\netcoreapp2.1\PA2-GivenCode.csproj.CoreCompileInputs.cache
+U:\WTAMU\MyClasses\Fall2018\OOAD\HW\PA#2\PA#2\PA2-GivenCode\obj\Debug\netcoreapp2.1\PA2-GivenCode.AssemblyInfoInputs.cache
+U:\WTAMU\MyClasses\Fall2018\OOAD\HW\PA#2\PA#2\PA2-GivenCode\obj\Debug\netcoreapp2.1\PA2-GivenCode.AssemblyInfo.cs
+U:\WTAMU\MyClasses\Fall2018\OOAD\HW\PA#2\PA#2\PA2-GivenCode\obj\Debug\netcoreapp2.1\PA2-GivenCode.dll
+U:\WTAMU\MyClasses\Fall2018\OOAD\HW\PA#2\PA#2\PA2-GivenCode\obj\Debug\netcoreapp2.1\PA2-GivenCode.pdb
